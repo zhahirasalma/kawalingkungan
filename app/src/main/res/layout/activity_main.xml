@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_menu"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/ganti_bahasa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bahasa"
+        android:textColor="#ffffff"
+        android:textSize="18dp"
+        android:padding="16dp"
+        android:layout_alignParentRight="true"
+        />
+
+    <TextView
+        android:id="@+id/kawalBerita_text"
+        android:layout_below="@+id/ganti_bahasa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:text="Kawal Berita"
+        android:padding="12dp"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:textColor="@color/brown"/>
+    
+    <GridLayout
+        android:id="@+id/layout_berita"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/kawalBerita_text"
+        android:columnCount="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/img_kawalKesehatan"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/logo_ka_kes" />
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/img_kawalLingkungan"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/logo_ka_ling"
+                />
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </GridLayout>
+
+    <TextView
+        android:id="@+id/kawalBencana_text"
+        android:layout_below="@+id/layout_berita"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kawal Berita"
+        android:padding="12dp"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:textColor="@color/brown"/>
+
+    <GridLayout
+        android:id="@+id/layout_bencana"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/kawalBencana_text"
+        android:columnCount="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/img_kawalGempa"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/logo_ka_gem" />
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/img_kawalCovid"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/logo_ka_cov"
+                />
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </GridLayout>
+
+
+
+</RelativeLayout>
