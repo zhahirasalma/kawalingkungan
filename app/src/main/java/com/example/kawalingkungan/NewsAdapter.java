@@ -8,6 +8,12 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.kawalingkungan.R;
+import com.example.kawalingkungan.NewsViewHolder;
+import com.example.kawalingkungan.ModelNews;
+import com.example.kawalingkungan.TimeUnits;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;

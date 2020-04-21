@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.kawalingkungan.R;
 import com.google.android.material.card.MaterialCardView;
 
 /**
@@ -16,7 +17,7 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
     public ImageView image;
     public TextView title;
     public TextView publishedAt;
-    public MaterialCardView cvNews;
+    public ImageView cvNews;
     public View view;
 
     public NewsViewHolder(View view) {
