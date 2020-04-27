@@ -1,7 +1,6 @@
 package com.example.kawalingkungan;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,17 +9,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.example.kawalingkungan.R;
-import com.example.kawalingkungan.NewsAdapter;
-import com.example.kawalingkungan.NewsApi;
-import com.example.kawalingkungan.ModelNews;
-import com.example.kawalingkungan.Server;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,11 +38,9 @@ public class HealthActivity extends AppCompatActivity implements NewsAdapter.onS
 
     RecyclerView rvHealth;
     NewsAdapter newsAdapter;
-    List<ModelNews> modelNews = new ArrayList<>();
+    List<ModelNews> listNews = new ArrayList<>();
     ProgressDialog progressDialog;
 
-    ApiService api;
-    final String category = "health";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,27 +51,24 @@ public class HealthActivity extends AppCompatActivity implements NewsAdapter.onS
         progressDialog.setTitle("Mohon tunggu");
         progressDialog.setCancelable(false);
         progressDialog.setMessage("Sedang menampilkan data");
-
+        newsAdapter = new NewsAdapter(this, listNews,this);
         loadJSON();
-//        refresh();
-
-        api = Server.getApiService();
-        newsAdapter = new NewsAdapter(this, modelNews,this);
 
         rvHealth = findViewById(R.id.rvNews);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         rvHealth.setLayoutManager(manager);
         rvHealth.setAdapter(newsAdapter);
         rvHealth.setHasFixedSize(true);
-        setupToolbar();
+//        setupToolbar();
+
     }
 
-    private void setupToolbar() {
-        Toolbar toolbar = findViewById(R.id.tbNews);
-        toolbar.setTitle("Berita Kesehatan");
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
+//    private void setupToolbar() {
+//        Toolbar toolbar = findViewById(R.id.tbNews);
+//        toolbar.setTitle("Berita Kesehatan");
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -81,45 +77,6 @@ public class HealthActivity extends AppCompatActivity implements NewsAdapter.onS
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-
-
-    public void refresh() {
-        progressDialog = new ProgressDialog(HealthActivity.this);
-        progressDialog.setCancelable(false);
-        progressDialog.setMessage("Loading...");
-        showDialog();
-        api.getListNews("id", category, NewsApi.NEWS_API).enqueue(new Callback<ResponseNews>() {
-            @Override
-            public void onResponse(Call<ResponseNews> call, Response<ResponseNews> response) {
-                if (response.isSuccessful()){
-                    hideDialog();
-                    modelNews = response.body().getNewsList();
-                    rvHealth.setAdapter(new NewsAdapter(HealthActivity.this, modelNews, HealthActivity.this::onSelected));
-                    newsAdapter.notifyDataSetChanged();
-                } else {
-                    hideDialog();
-                    Toast.makeText(HealthActivity.this, "Gagal mengambil data !", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseNews> call, Throwable t) {
-                hideDialog();
-                Toast.makeText(HealthActivity.this, "Gagal menyambung ke internet !", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    private void showDialog() {
-        if (!progressDialog.isShowing())
-            progressDialog.show();
-    }
-
-    private void hideDialog() {
-        if (progressDialog.isShowing())
-            progressDialog.dismiss();
     }
 
     private void loadJSON() {
@@ -131,20 +88,23 @@ public class HealthActivity extends AppCompatActivity implements NewsAdapter.onS
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.d("_DATA",response.toString());
                         try {
-                            Log.d("_DATA2",response.toString());
+                            progressDialog.dismiss();
                             JSONArray playerArray = response.getJSONArray("articles");
                             for (int i = 0; i < playerArray.length(); i++) {
                                 JSONObject temp = playerArray.getJSONObject(i);
                                 ModelNews dataApi = new ModelNews();
-                                dataApi.setTitle(temp.getString("title"));
+                                String title = temp.getString("title");
+
+                                Log.d("Newsresponse",title);
+
+                                dataApi.setTitle(title);
                                 dataApi.setUrl(temp.getString("url"));
                                 dataApi.setPublishedAt(temp.getString("publishedAt"));
                                 dataApi.setUrlToImage(temp.getString("urlToImage"));
 
-                                modelNews.add(dataApi);
-                                progressDialog.dismiss();
+                                listNews.add(dataApi);
+                                newsAdapter.notifyDataSetChanged();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -158,16 +118,19 @@ public class HealthActivity extends AppCompatActivity implements NewsAdapter.onS
                         Toast.makeText(HealthActivity.this, "Tidak ada jaringan internet!", Toast.LENGTH_SHORT).show();
                     }
                 });
+
     }
 
     private void showNews() {
-        newsAdapter = new NewsAdapter(HealthActivity.this, modelNews, this);
+        newsAdapter = new NewsAdapter(HealthActivity.this, listNews, this);
         rvHealth.setAdapter(newsAdapter);
     }
 
     @Override
     public void onSelected(ModelNews mdlNews) {
-        startActivity(new Intent(HealthActivity.this, OpenNewsActivity.class).putExtra("url", mdlNews.getUrl()));
+        Intent intent = new Intent(HealthActivity.this, OpenNewsActivity.class);
+        intent.putExtra("url", mdlNews.getUrl());
+        startActivity(intent);
     }
 
 }

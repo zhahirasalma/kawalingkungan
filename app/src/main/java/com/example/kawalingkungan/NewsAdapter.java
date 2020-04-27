@@ -2,6 +2,7 @@ package com.example.kawalingkungan;
 
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,14 +61,17 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsViewHolder> {
                 .apply(RequestOptions.bitmapTransform(new RoundedCorners(30)))
                 .into(viewHolder.image);
 
+        Log.d("adapterOnBind", berita.getTitle());
+
         viewHolder.title.setText(berita.getTitle());
         viewHolder.publishedAt.setText(TimeUnits.getTimeAgo(berita.getPublishedAt()));
-        viewHolder.cvNews.setOnClickListener(new View.OnClickListener() {
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onSelectData.onSelected(berita);
             }
         });
+
     }
 
     @Override

@@ -32,7 +32,7 @@ public class EnvironmentActivity extends AppCompatActivity implements NewsAdapte
 
     RecyclerView rvTechno;
     NewsAdapter newsAdapter;
-    List<ModelNews> modelNews = new ArrayList<>();
+    List<ModelNews> listNews = new ArrayList<>();
     ProgressDialog progressDialog;
 
     @Override
@@ -44,19 +44,16 @@ public class EnvironmentActivity extends AppCompatActivity implements NewsAdapte
         progressDialog.setTitle("Mohon tunggu");
         progressDialog.setCancelable(false);
         progressDialog.setMessage("Sedang menampilkan data");
+        newsAdapter = new NewsAdapter(this, listNews,this);
+        loadJSON();
 
         rvTechno = findViewById(R.id.rvNews);
+        LinearLayoutManager manager = new LinearLayoutManager(this);
+        rvTechno.setLayoutManager(manager);
+        rvTechno.setAdapter(newsAdapter);
         rvTechno.setHasFixedSize(true);
-        rvTechno.setLayoutManager(new LinearLayoutManager(this));
-        setupToolbar();
-        loadJSON();
-    }
+//        setupToolbar();
 
-    private void setupToolbar() {
-        Toolbar toolbar = findViewById(R.id.tbNews);
-        toolbar.setTitle("Berita Teknologi");
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -82,13 +79,15 @@ public class EnvironmentActivity extends AppCompatActivity implements NewsAdapte
                             for (int i = 0; i < playerArray.length(); i++) {
                                 JSONObject temp = playerArray.getJSONObject(i);
                                 ModelNews dataApi = new ModelNews();
+
                                 dataApi.setTitle(temp.getString("title"));
                                 dataApi.setUrl(temp.getString("url"));
                                 dataApi.setPublishedAt(temp.getString("publishedAt"));
                                 dataApi.setUrlToImage(temp.getString("urlToImage"));
 
-                                modelNews.add(dataApi);
-                                showNews();
+                                listNews.add(dataApi);
+                                newsAdapter.notifyDataSetChanged();
+//                                showNews();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -105,13 +104,15 @@ public class EnvironmentActivity extends AppCompatActivity implements NewsAdapte
     }
 
     private void showNews() {
-        newsAdapter = new NewsAdapter(EnvironmentActivity.this, modelNews, this);
+        newsAdapter = new NewsAdapter(EnvironmentActivity.this, listNews, this);
         rvTechno.setAdapter(newsAdapter);
     }
 
     @Override
     public void onSelected(ModelNews mdlNews) {
-        startActivity(new Intent(EnvironmentActivity.this, OpenNewsActivity.class).putExtra("url", mdlNews.getUrl()));
+        Intent intent = new Intent(EnvironmentActivity.this, OpenNewsActivity.class);
+        intent.putExtra("url", mdlNews.getUrl());
+        startActivity(intent);
     }
 
 }
