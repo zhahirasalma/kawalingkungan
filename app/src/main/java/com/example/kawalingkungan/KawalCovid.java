@@ -35,20 +35,22 @@ public class KawalCovid extends AppCompatActivity {
         global_cured=findViewById(R.id.global_cured_amount);
         global_died=findViewById(R.id.global_died_amount);
 
-        loadJSON();
+        loadJSON_Cured();
+        loadJSON_Died();
+        loadJSON_Positive();
+        loadJSON_Indonesia();
     }
 
-    private void loadJSON(){
-        AndroidNetworking.get("https://api.kawalcorona.com/indonesia/")
+    private void loadJSON_Cured(){
+        AndroidNetworking.get(NewsApi.DATA_COVID_GLOBAL_CURED)
                 .setTag("test")
-                .setPriority(Priority.MEDIUM)
+                .setPriority(Priority.HIGH)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
                         Log.d("_DATA", response.toString());
 
-                        
                     }
 
                     @Override
@@ -57,4 +59,69 @@ public class KawalCovid extends AppCompatActivity {
                     }
                 });
     }
+
+    private void loadJSON_Died(){
+        AndroidNetworking.get(NewsApi.DATA_COVID_GLOBAL_DIED)
+                .setTag("test")
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            Log.d("_DATA", response.toString());
+                            response.get("value").toString();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        Toast.makeText(KawalCovid.this, "Gagal", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+    }
+
+    private void loadJSON_Positive(){
+        AndroidNetworking.get(NewsApi.DATA_COVID_GLOBAL_POSITIVE)
+                .setTag("test")
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d("_DATA3", response.toString());
+
+
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                    }
+                });
+    }
+
+    private void loadJSON_Indonesia(){
+        AndroidNetworking.get(NewsApi.DATA_COVID_INDONESIA)
+                .setTag("test")
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d("_DATA", response.toString());
+
+
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                    }
+                });
+    }
+
 }

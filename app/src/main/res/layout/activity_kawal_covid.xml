@@ -10,7 +10,7 @@
         android:id="@+id/ina_pos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Positif: "/>
+        android:text="@string/positif"/>
     <TextView
         android:id="@+id/ina_pos_amount"
         android:layout_width="wrap_content"
@@ -20,7 +20,7 @@
         android:id="@+id/ina_cured"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sembuh: "/>
+        android:text="@string/sembuh"/>
     <TextView
         android:id="@+id/ina_cured_amount"
         android:layout_width="wrap_content"
@@ -30,7 +30,7 @@
         android:id="@+id/ina_died"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Meninggal: "/>
+        android:text="@string/meninggal"/>
     <TextView
         android:id="@+id/ina_died_amount"
         android:layout_width="wrap_content"
@@ -41,7 +41,7 @@
         android:id="@+id/global_pos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Positif: "/>
+        android:text="@string/positif"/>
     <TextView
         android:id="@+id/global_pos_amount"
         android:layout_width="wrap_content"
@@ -51,7 +51,7 @@
         android:id="@+id/global_cured"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sembuh: "/>
+        android:text="@string/sembuh"/>
     <TextView
         android:id="@+id/global_cured_amount"
         android:layout_width="wrap_content"
@@ -61,11 +61,11 @@
         android:id="@+id/global_died"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Meninggal: "/>
+        android:text="@string/meninggal"/>
     <TextView
         android:id="@+id/global_died_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""/>
+        android:text="x"/>
 
 </LinearLayout>

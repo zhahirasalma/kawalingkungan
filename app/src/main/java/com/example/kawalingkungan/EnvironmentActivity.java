@@ -41,9 +41,9 @@ public class EnvironmentActivity extends AppCompatActivity implements NewsAdapte
         setContentView(R.layout.activity_news);
 
         progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Mohon tunggu");
+        progressDialog.setTitle(getString(R.string.dialog_tunggu));
         progressDialog.setCancelable(false);
-        progressDialog.setMessage("Sedang menampilkan data");
+        progressDialog.setMessage(getString(R.string.dialog_tunggu_2));
         newsAdapter = new NewsAdapter(this, listNews,this);
         loadJSON();
 

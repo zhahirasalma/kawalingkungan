@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Kawalingkungan</string>
+    <string name="dialog_tunggu">Mohon tunggu</string>
+    <string name="dialog_tunggu_2">Sedang menampilkan data</string>
+    <string name="bahasa">Bahasa</string>
+    <string name="kawal_berita" translatable="false">Kawal Berita</string>
+    <string name="kawal_bencana" translatable="false">Kawal Bencana</string>
+    <string name="positif">Positif:</string>
+    <string name="sembuh">Sembuh:</string>
+    <string name="meninggal">Meninggal:</string>
 </resources>
