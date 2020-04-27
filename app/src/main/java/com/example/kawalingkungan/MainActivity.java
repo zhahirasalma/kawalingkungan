@@ -35,7 +35,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 //        img_kawalGem.setOnClickListener(this);
-//        img_kawalCov.setOnClickListener(this);
+        img_kawalCov.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this, KawalCovid.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
