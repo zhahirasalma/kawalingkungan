@@ -1,7 +1,10 @@
 package com.example.kawalingkungan;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.nfc.Tag;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -16,7 +19,9 @@ import com.android.volley.toolbox.Volley;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.androidnetworking.interfaces.ParsedRequestListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -50,7 +55,9 @@ public class KawalCovid extends AppCompatActivity {
         json_died();
         json_cured();
         json_pos();
-        json_ina();
+//        json_ina();
+
+        load_ina();
     }
 
     private void json_died(){
@@ -151,6 +158,41 @@ public class KawalCovid extends AppCompatActivity {
             }
         });
         mQueue.add(request);
+    }
+
+    private void load_ina(){
+        AndroidNetworking.get("https://api.kawalcorona.com/indonesia/")
+                .setTag(this)
+                .setPriority(Priority.LOW)
+                .build()
+                .getAsJSONArray(new JSONArrayRequestListener() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.d("lokal", response.toString());
+                        try {
+
+                            for(int i=0;i<response.length();i++){
+                                JSONObject nasional=response.getJSONObject(i);
+                                ind_pos=nasional.getString("positif");
+                                ind_cured=nasional.getString("sembuh");
+                                ind_died=nasional.getString("meninggal");
+
+                                ina_pos.setText(ind_pos);
+                                ina_cured.setText(ind_cured);
+                                ina_died.setText(ind_died);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                    }
+                });
+
     }
 
 }
