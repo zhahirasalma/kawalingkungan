@@ -29,7 +29,7 @@ public class OpenNewsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_open_news);
 
         //android toolbar
-        setupToolbar();
+//        setupToolbar();
 
         mProgressBar = findViewById(R.id.progress_bar);
         mProgressBar.setMax(100);
@@ -89,21 +89,21 @@ public class OpenNewsActivity extends AppCompatActivity {
     }
 
     //setup toolbar
-    private void setupToolbar() {
-        Toolbar toolbar = findViewById(R.id.tbOpenNews);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mWebView.canGoBack()) {
-                    mWebView.goBack();
-                } else {
-                    finish();
-                }
-            }
-        });
-    }
+//    private void setupToolbar() {
+//        Toolbar toolbar = findViewById(R.id.tbOpenNews);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (mWebView.canGoBack()) {
+//                    mWebView.goBack();
+//                } else {
+//                    finish();
+//                }
+//            }
+//        });
+//    }
 
     //share news
     private void shareUrl(String url) {
