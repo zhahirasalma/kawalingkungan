@@ -51,23 +51,43 @@
                 android:padding="5dp">
 
                 <TextView
-                    android:id="@+id/title"
+                    android:id="@+id/tanggalGempa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:singleLine="false"
-                    android:text="Title"
+                    android:text="Tanggal"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/publishedAt"
+                    android:id="@+id/jamGempa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="3dp"
                     android:singleLine="true"
-                    android:text="Time"
+                    android:text="Waktu"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textSize="8sp" />
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/magGempa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:singleLine="true"
+                    android:text="Magnitude"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/wilGempa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:singleLine="true"
+                    android:text="Wilayah"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="12sp" />
 
             </LinearLayout>
 

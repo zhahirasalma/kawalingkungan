@@ -1,0 +1,123 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#477B72"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/img_logo"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/logocoklat"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kawalingkungan"
+        android:textColor="#ffff"
+        android:layout_toEndOf="@+id/img_logo"
+        android:textStyle="bold"
+        />
+
+    <ImageView
+        android:id="@+id/imgpos"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/positif2"
+        android:layout_below="@+id/img_logo"
+        android:layout_marginTop="10dp"
+        />
+    <TextView
+        android:id="@+id/pos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/positif"
+        android:layout_toRightOf="@id/imgpos"
+        android:layout_marginTop="38dp"/>
+
+    <TextView
+        android:id="@+id/textPos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="x"
+        android:layout_toEndOf="@id/pos"
+        android:layout_marginTop="38dp"
+        android:layout_marginLeft="10dp"/>
+
+
+    <ImageView
+        android:id="@+id/imgsem"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/sembuh2"
+        android:layout_below="@+id/imgpos"
+        android:layout_marginTop="10dp"
+        />
+    <TextView
+        android:id="@+id/sem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sembuh"
+        android:layout_toRightOf="@id/imgsem"
+        android:layout_marginTop="75dp"/>
+
+    <TextView
+        android:id="@+id/textSem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="x"
+        android:layout_toEndOf="@id/sem"
+        android:layout_marginTop="75dp"
+        android:layout_marginLeft="10dp"/>
+
+    <ImageView
+        android:id="@+id/imgwaf"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/meninggal2"
+        android:layout_below="@+id/imgsem"
+        android:layout_marginTop="10dp"
+        />
+    <TextView
+        android:id="@+id/waf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/meninggal"
+        android:layout_toRightOf="@id/imgwaf"
+        android:layout_marginTop="114dp"/>
+
+    <TextView
+        android:id="@+id/textWaf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="x"
+        android:layout_toEndOf="@id/waf"
+        android:layout_marginTop="114dp"
+        android:layout_marginLeft="10dp"/>
+
+    <Button
+        android:id="@+id/buttonWidget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imgwaf"
+        android:padding="10dp"
+        android:text="Lihat Detail"/>
+
+
+
+<!--    <TextView-->
+<!--        android:id="@+id/appwidget_text"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_centerVertical="true"-->
+<!--        android:layout_margin="8dp"-->
+<!--        android:background="#09C"-->
+<!--        android:contentDescription="@string/appwidget_text"-->
+<!--        android:text="@string/appwidget_text"-->
+<!--        android:textColor="#ffffff"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold|italic" />-->
+
+</RelativeLayout>

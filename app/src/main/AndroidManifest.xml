@@ -14,7 +14,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".KawalCovid"></activity>
+        <receiver android:name=".CovidWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/covid_widget_info" />
+        </receiver>
+
+        <activity android:name=".EarthquakeActivity" />
+        <activity android:name=".KawalCovid" />
         <activity android:name=".LandingPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +37,7 @@
             android:name=".MainActivity"
             android:screenOrientation="fullSensor" />
         <activity android:name=".HealthActivity" />
-        <activity android:name=".OpenNewsActivity"/>
+        <activity android:name=".OpenNewsActivity" />
         <activity android:name=".EnvironmentActivity" />
     </application>
 

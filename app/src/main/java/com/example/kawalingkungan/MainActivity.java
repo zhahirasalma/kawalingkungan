@@ -38,7 +38,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//        img_kawalGem.setOnClickListener(this);
+        img_kawalGem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this, EarthquakeActivity.class);
+                startActivity(intent);
+            }
+        });
+
         img_kawalCov.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
