@@ -18,6 +18,9 @@ public class InfoXmlPullParser {
     static final String KEY_DATE = "tanggal";
     static final String KEY_TIME = "jam";
     static final String KEY_MAG = "magnitude";
+    static final String KEY_LIN = "lintang";
+    static final String KEY_BU = "bujur";
+    static final String KEY_KED = "kedalaman";
     static final String KEY_LOC = "wilayah";
     static final String KEY_SYM = "_symbol";
 
@@ -59,11 +62,19 @@ public class InfoXmlPullParser {
                             curModelInfo.setJam(curText);
                         }else if(tagname.equalsIgnoreCase(KEY_MAG)){
                             curModelInfo.setMagnitude(curText);
+                        }else if(tagname.equalsIgnoreCase(KEY_LIN)){
+                            curModelInfo.setLintang(curText);
+                        }else if(tagname.equalsIgnoreCase(KEY_BU)){
+                            curModelInfo.setBujur(curText);
+                        }else if(tagname.equalsIgnoreCase(KEY_KED)){
+                            curModelInfo.setKedalaman(curText);
                         }else if(tagname.equalsIgnoreCase(KEY_LOC)){
                             curModelInfo.setWilayah(curText);
-                        }else if(tagname.equalsIgnoreCase(KEY_SYM)){
-                            curModelInfo.set_symbol(curText);
-                        }break;
+                        }
+//                        else if(tagname.equalsIgnoreCase(KEY_SYM)){
+//                            curModelInfo.set_symbol(curText);
+//                        }
+                        break;
                     default:
                         break;
                 }

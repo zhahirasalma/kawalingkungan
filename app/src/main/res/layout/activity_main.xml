@@ -50,7 +50,6 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:src="@drawable/logo_ka_kes"
-
                 />
             <Space
                 android:layout_width="wrap_content"
@@ -67,7 +66,33 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
         </LinearLayout>
+
     </GridLayout>
+
+    <GridLayout
+        android:id="@+id/layout_berita_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_berita"
+        android:columnCount="1">
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/kaKes_text"
+            android:layout_below="@+id/img_kawalKesehatan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/kawal_kesehatan"
+            android:padding="8dp"
+            android:textSize="14dp"
+            android:textColor="@color/brown"/>
+
+    </GridLayout>
+
 
     <TextView
         android:id="@+id/kawalBencana_text"
@@ -76,6 +101,7 @@
         android:layout_height="wrap_content"
         android:text="@string/kawal_bencana"
         android:padding="12dp"
+        android:layout_marginTop="20dp"
         android:textSize="18dp"
         android:textStyle="bold"
         android:textColor="@color/brown"/>

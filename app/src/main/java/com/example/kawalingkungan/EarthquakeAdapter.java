@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,10 +26,10 @@ public class EarthquakeAdapter extends RecyclerView.Adapter<EarthquakeViewHolder
         void onSelected(ModelInfo mdlInfo);
     }
 
-    public EarthquakeAdapter(Context context, int android,
-                             List<ModelInfo> onSelectData){
-        this.mContext=context;
-//        this.infoList=android;
+    public EarthquakeAdapter(Context context,
+                             int i, List<ModelInfo> android) {
+        this.mContext = context;
+        this.infoList = android;
 //        this.onSelectData=onSelectData;
     }
 
@@ -43,32 +44,35 @@ public class EarthquakeAdapter extends RecyclerView.Adapter<EarthquakeViewHolder
     public void onBindViewHolder(@NonNull EarthquakeViewHolder holder, int position) {
         final ModelInfo gempa = infoList.get(position);
 
-        Glide.with(mContext)
-                .load(gempa.get_symbol())
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .placeholder(R.drawable.ic_image_black_24dp)
-                //.transform(new CenterInside(), new RoundedCorners(30))
-                .apply(RequestOptions.bitmapTransform(new RoundedCorners(30)))
-                .into(holder.imgGempa);
+//        Glide.with(mContext)
+//                .load(gempa.get_symbol())
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .placeholder(R.drawable.ic_image_black_24dp)
+//                //.transform(new CenterInside(), new RoundedCorners(30))
+//                .apply(RequestOptions.bitmapTransform(new RoundedCorners(30)))
+//                .into(holder.imgGempa);
 
         Log.d("adapterOnBind", gempa.getTanggal());
 
-        holder.tanggal.setText(gempa.getTanggal());
-        holder.jam.setText(TimeUnits.getTimeAgo(gempa.getJam()));
-        holder.magnitude.setText(gempa.getMagnitude());
-        holder.wilayah.setText(gempa.getWilayah());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onSelectData.onSelected(gempa);
-            }
-        });
-
+        holder.tanggal.setText("Tanggal: " + gempa.getTanggal());
+        holder.jam.setText("Jam: " + gempa.getJam());
+        holder.magnitude.setText("Magnitude: " + gempa.getMagnitude());
+        holder.lintang.setText("Lintang: " + gempa.getLintang());
+        holder.bujur.setText("Bujur: " + gempa.getBujur());
+        holder.kedalaman.setText("Kedalaman: " + gempa.getKedalaman());
+        holder.wilayah.setText("Wilayah: " + gempa.getWilayah());
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onSelectData.onSelected(gempa);
+//            }
+//        });
+//
+//    }
     }
 
     @Override
     public int getItemCount() {
-//        return infoList.size();
-        return 0;
+        return infoList.size();
     }
 }

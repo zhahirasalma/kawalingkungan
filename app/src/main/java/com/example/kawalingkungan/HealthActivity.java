@@ -94,9 +94,10 @@ public class HealthActivity extends AppCompatActivity implements NewsAdapter.onS
                             for (int i = 0; i < playerArray.length(); i++) {
                                 JSONObject temp = playerArray.getJSONObject(i);
                                 ModelNews dataApi = new ModelNews();
+                                Log.d("news", playerArray.get(i).toString());
                                 String title = temp.getString("title");
 
-                                Log.d("Newsresponse",title);
+//                                Log.d("Newsresponse",title);
 
                                 dataApi.setTitle(title);
                                 dataApi.setUrl(temp.getString("url"));

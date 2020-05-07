@@ -16,7 +16,8 @@ public class Downloader {
 
     static final int POST_PROGRESS=1;
 
-    public static void DownloadFromUrl(String URL, FileOutputStream fos){
+    public static byte[] DownloadFromUrl(String URL, FileOutputStream fos){
+        byte data[] = new byte[1024];
         try {
             URL url = new URL(URL);
             long startTime=System.currentTimeMillis();
@@ -32,8 +33,6 @@ public class Downloader {
             BufferedOutputStream bos=new BufferedOutputStream(fos);
             Log.i(myTag, "Got FOS and BOS");
 
-            byte data[]=new byte[1024];
-
             int count;
             while ((count=bis.read(data))!= -1){
                 bos.write(data, 0, count);
@@ -47,5 +46,7 @@ public class Downloader {
         }catch (IOException e) {
             Log.d(myTag, "Error: " +e);
         }
+
+        return data;
     }
 }

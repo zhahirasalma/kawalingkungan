@@ -70,6 +70,8 @@ public class CovidWidget extends AppWidgetProvider {
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         // There may be multiple widgets active, so update all of them
+
+        CharSequence widgetText = context.getString(R.string.appwidget_text);
         for (int appWidgetId : appWidgetIds) {
             Intent intent=new Intent(context, KawalCovid.class);
             PendingIntent pendingIntent=PendingIntent.getActivity(context, 0,

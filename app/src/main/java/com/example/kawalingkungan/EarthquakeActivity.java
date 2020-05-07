@@ -1,8 +1,5 @@
 package com.example.kawalingkungan;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -10,18 +7,28 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EarthquakeActivity extends AppCompatActivity {
+public class EarthquakeActivity extends AppCompatActivity implements EarthquakeAdapter.onSelectData{
 
-    private EarthquakeAdapter earthquakeAdapter;
-    private RecyclerView rvEarthquake;
+//    private RecyclerView rvEarthquake;
     List<ModelInfo> listEarthquake =new ArrayList<>();
-    ProgressDialog progressDialog;
+    EarthquakeAdapter earthquakeAdapter;
+    RecyclerView rvEarthquake;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,14 +36,18 @@ public class EarthquakeActivity extends AppCompatActivity {
         Log.i("ModelInfo", "OnCreate()");
         setContentView(R.layout.activity_earthquake);
 
-        rvEarthquake=findViewById(R.id.rvEarthquake);
+        rvEarthquake=(RecyclerView) findViewById(R.id.rvEarthquake);
+        LinearLayoutManager manager = new LinearLayoutManager(this);
+        rvEarthquake.setLayoutManager(manager);
+        rvEarthquake.setAdapter(earthquakeAdapter);
+        rvEarthquake.setHasFixedSize(true);
 
         if(isNetworkAvailable()){
             Log.i("InfoGempa", "starting download task");
-            SitesDownloadTask download=new SitesDownloadTask();
+            SitesDownloadTask download=new SitesDownloadTask(this);
             download.execute();
         }else {
-            earthquakeAdapter=new EarthquakeAdapter(getApplicationContext(), -1,
+            earthquakeAdapter = new EarthquakeAdapter(getApplicationContext(), -1,
                     InfoXmlPullParser.getStackFromFile(EarthquakeActivity.this));
             rvEarthquake.setAdapter(earthquakeAdapter);
         }
@@ -49,25 +60,56 @@ public class EarthquakeActivity extends AppCompatActivity {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
-    private class SitesDownloadTask extends AsyncTask<Void, Void, Void>{
+    @Override
+    public void onSelected(ModelInfo mdlInfo) {
+
+    }
+
+    private class SitesDownloadTask extends AsyncTask<Void, Void, List<ModelInfo>> {
+        Context context;
+        SitesDownloadTask(Context context){
+            this.context = context;
+        }
 
         @Override
-        protected Void doInBackground(Void... voids) {
+        protected List<ModelInfo> doInBackground(Void... voids) {
+            byte data[] = new byte[1024];
             try {
-                Downloader.DownloadFromUrl("https://data.bmkg.go.id/gempaterkini.xml",
+                data = Downloader.DownloadFromUrl("https://data.bmkg.go.id/gempaterkini.xml",
                         openFileOutput("GempaTerkini.xml", Context.MODE_PRIVATE));
+
             }catch (FileNotFoundException e){
                 e.printStackTrace();
             }
-            return null;
+            Log.d("Data",data.toString());
+            return listEarthquake;
         }
 
         @Override
-        protected void onPostExecute(Void aVoid) {
+        protected void onPostExecute(List<ModelInfo> aVoid) {
+
             earthquakeAdapter=new EarthquakeAdapter(EarthquakeActivity.this, -1,
                     InfoXmlPullParser.getStackFromFile(EarthquakeActivity.this));
             rvEarthquake.setAdapter(earthquakeAdapter);
-//            Log.i("InfoGempa", "adapter size = " + earthquakeAdapter.getItemCount());
+
+            listEarthquake = InfoXmlPullParser.getStackFromFile(context);
+            StringBuilder builder = new StringBuilder();
+            for (int i=0;i<listEarthquake.size();i++){
+                Log.d("InfoListGempa",listEarthquake.get(i).toString());
+//                ModelInfo data = new ModelInfo();
+//                StringBuilder jam = builder.append(data.jam);
+//                data.setJam(jam.toString());
+
+//                String jam = String.valueOf(builder.append(data.jam));
+//                data.setJam(jam);
+
+//                listEarthquake.add(data);
+                earthquakeAdapter.notifyDataSetChanged();
+
+            }
         }
     }
+
+
+
 }
