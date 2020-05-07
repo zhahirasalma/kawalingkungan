@@ -6,67 +6,176 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".KawalCovid">
-    
-    <TextView
-        android:id="@+id/ina_pos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/positif"/>
-    <TextView
-        android:id="@+id/ina_pos_amount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""/>
-    <TextView
-        android:id="@+id/ina_cured"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sembuh"/>
-    <TextView
-        android:id="@+id/ina_cured_amount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""/>
-    <TextView
-        android:id="@+id/ina_died"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/meninggal"/>
-    <TextView
-        android:id="@+id/ina_died_amount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""/>
 
-    <TextView
-        android:id="@+id/global_pos"
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbCov"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/positif"/>
-    <TextView
-        android:id="@+id/global_pos_amount"
-        android:layout_width="wrap_content"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:orientation="vertical"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=""/>
-    <TextView
-        android:id="@+id/global_cured"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sembuh"/>
-    <TextView
-        android:id="@+id/global_cured_amount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""/>
-    <TextView
-        android:id="@+id/global_died"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/meninggal"/>
-    <TextView
-        android:id="@+id/global_died_amount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="x"/>
+        android:padding="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/nasional"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Nasional"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/img_ina_pos"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/positif"/>
+            <TextView
+                android:id="@+id/ina_pos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/img_ina_pos"
+                android:text="@string/positif"/>
+            <TextView
+                android:id="@+id/ina_pos_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/ina_pos"
+                android:text="x"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/img_ina_cur"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/sembuh"/>
+            <TextView
+                android:id="@+id/ina_cured"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/img_ina_cur"
+                android:text="@string/sembuh"/>
+            <TextView
+                android:id="@+id/ina_cured_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/ina_cured"
+                android:text="x"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/img_ina_died"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/meninggal"/>
+            <TextView
+                android:id="@+id/ina_died"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/img_ina_died"
+                android:text="@string/meninggal"/>
+            <TextView
+                android:id="@+id/ina_died_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/ina_died"
+                android:text="x"/>
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/internasional"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ina_died"
+            android:layout_marginTop="20dp"
+            android:text="Internasional"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+            <ImageView
+                android:id="@+id/img_int_pos"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/positif"/>
+            <TextView
+                android:id="@+id/global_pos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/img_int_pos"
+                android:text="@string/positif"/>
+            <TextView
+                android:id="@+id/global_pos_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/global_pos"
+                android:text="x"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/img_int_cur"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/sembuh"/>
+            <TextView
+                android:id="@+id/global_cured"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/img_int_cur"
+                android:text="@string/sembuh"/>
+            <TextView
+                android:id="@+id/global_cured_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/global_cured"
+                android:text="x"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/img_int_died"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/meninggal"/>
+            <TextView
+                android:id="@+id/global_died"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/img_int_died"
+                android:text="@string/meninggal"/>
+            <TextView
+                android:id="@+id/global_died_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/global_died"
+                android:text="x"/>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
 
 </LinearLayout>

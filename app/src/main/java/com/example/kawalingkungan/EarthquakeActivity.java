@@ -10,6 +10,7 @@ import android.util.Log;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -42,6 +43,8 @@ public class EarthquakeActivity extends AppCompatActivity implements EarthquakeA
         rvEarthquake.setAdapter(earthquakeAdapter);
         rvEarthquake.setHasFixedSize(true);
 
+        setupToolbar();
+
         if(isNetworkAvailable()){
             Log.i("InfoGempa", "starting download task");
             SitesDownloadTask download=new SitesDownloadTask(this);
@@ -51,6 +54,13 @@ public class EarthquakeActivity extends AppCompatActivity implements EarthquakeA
                     InfoXmlPullParser.getStackFromFile(EarthquakeActivity.this));
             rvEarthquake.setAdapter(earthquakeAdapter);
         }
+    }
+
+    private void setupToolbar() {
+        Toolbar toolbar = findViewById(R.id.tbEq);
+        toolbar.setTitle("Kawal Gempa Bumi");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
     private boolean isNetworkAvailable() {

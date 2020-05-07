@@ -10,6 +10,15 @@
     android:orientation="vertical"
     tools:context=".EarthquakeActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbEq"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:orientation="vertical"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvEarthquake"
         android:layout_width="match_parent"

@@ -1,23 +1,18 @@
 package com.example.kawalingkungan;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
+//import android.widget.Toolbar;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
@@ -29,10 +24,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class HealthActivity extends AppCompatActivity implements NewsAdapter.onSelectData {
 
@@ -59,16 +50,16 @@ public class HealthActivity extends AppCompatActivity implements NewsAdapter.onS
         rvHealth.setLayoutManager(manager);
         rvHealth.setAdapter(newsAdapter);
         rvHealth.setHasFixedSize(true);
-//        setupToolbar();
+        setupToolbar();
 
     }
 
-//    private void setupToolbar() {
-//        Toolbar toolbar = findViewById(R.id.tbNews);
-//        toolbar.setTitle("Berita Kesehatan");
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//    }
+    private void setupToolbar() {
+        Toolbar toolbar = findViewById(R.id.tbNews);
+        toolbar.setTitle("Kawal Kesehatan");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

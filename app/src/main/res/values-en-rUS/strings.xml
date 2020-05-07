@@ -4,7 +4,9 @@
     <string name="dialog_tunggu">Please wait</string>
     <string name="dialog_tunggu_2">showing data?</string>
     <string name="bahasa">Language</string>
-    <string name="positif">Positive:</string>
-    <string name="sembuh">Cured:</string>
-    <string name="meninggal">Died:</string>
+    <string name="positif">Positive: </string>
+    <string name="sembuh">Cured: </string>
+    <string name="meninggal">Died :</string>
+    <string name="appwidget_text">Example</string>
+    <string name="add_widget">Add Widget</string>
 </resources>

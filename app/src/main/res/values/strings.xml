@@ -5,10 +5,10 @@
     <string name="bahasa">Bahasa</string>
     <string name="kawal_berita" translatable="false">Kawal Berita</string>
     <string name="kawal_bencana" translatable="false">Kawal Bencana</string>
-    <string name="positif">Positif:</string>
-    <string name="sembuh">Sembuh:</string>
-    <string name="meninggal">Meninggal:</string>
-    <string name="appwidget_text">EXAMPLE</string>
-    <string name="add_widget">Add widget</string>
-    <string name="kawal_kesehatan">Kawal Kesehatan</string>
+    <string name="positif">Positif: </string>
+    <string name="sembuh">Sembuh: </string>
+    <string name="meninggal">Meninggal: </string>
+    <string name="appwidget_text">Contoh</string>
+    <string name="add_widget">Tambah Widget</string>
+    <string name="kawal_kesehatan" translatable="false">Kawal Kesehatan</string>
 </resources>

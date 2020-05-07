@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -52,8 +53,15 @@ public class EnvironmentActivity extends AppCompatActivity implements NewsAdapte
         rvTechno.setLayoutManager(manager);
         rvTechno.setAdapter(newsAdapter);
         rvTechno.setHasFixedSize(true);
-//        setupToolbar();
+        setupToolbar();
 
+    }
+
+    private void setupToolbar() {
+        Toolbar toolbar = findViewById(R.id.tbNews);
+        toolbar.setTitle("Kawal Kesehatan");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
     @Override

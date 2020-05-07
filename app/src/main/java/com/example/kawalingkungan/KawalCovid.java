@@ -2,6 +2,7 @@ package com.example.kawalingkungan;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.nfc.Tag;
 import android.os.Build;
@@ -55,9 +56,15 @@ public class KawalCovid extends AppCompatActivity {
         json_died();
         json_cured();
         json_pos();
-//        json_ina();
-
         load_ina();
+        setupToolbar();
+    }
+
+    private void setupToolbar() {
+        Toolbar toolbar = findViewById(R.id.tbCov);
+        toolbar.setTitle("Kawal Covid");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
     private void json_died(){
