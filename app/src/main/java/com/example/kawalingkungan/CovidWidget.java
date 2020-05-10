@@ -14,6 +14,7 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,46 +31,24 @@ public class CovidWidget extends AppWidgetProvider {
     TextView ina_cured;
     TextView ina_died;
     String ind_pos, ind_cured, ind_died;
-
-    private void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
-                                int appWidgetId) {
-
-
-        ina_pos= ina_pos.findViewById(R.id.ina_pos_amount);
-        ina_cured= ina_cured.findViewById(R.id.ina_cured_amount);
-        ina_died=ina_died.findViewById(R.id.ina_died_amount);
-
-        load_ina();
-
-
-        CharSequence widgetText = context.getString(R.string.appwidget_text);
-        // Construct the RemoteViews object
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.covid_widget);
-//        views.setTextViewText(R.id.appwidget_text, widgetText);
-
-        Intent intentUpdate=new Intent(context, KawalCovid.class);
-        intentUpdate.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
-
-        int[] idArray=new int[]{appWidgetId};
-        intentUpdate.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, idArray);
-
-        PendingIntent pendingUpdate= PendingIntent.getBroadcast(context,
-                appWidgetId, intentUpdate, PendingIntent.FLAG_UPDATE_CURRENT);
-
-        Intent intent=new Intent(context, KawalCovid.class);
-        PendingIntent pendingIntent=PendingIntent.getActivity(context,
-                0, intent, 0);
-
-        views.setOnClickPendingIntent(R.id.buttonWidget, pendingIntent);
-
-
-        // Instruct the widget manager to update the widget
-        appWidgetManager.updateAppWidget(appWidgetId, views);
-    }
+//
+//    private void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
+//                                int appWidgetId) {
+//
+//
+//        ina_pos= ina_pos.findViewById(R.id.ina_pos_amount);
+//        ina_cured= ina_cured.findViewById(R.id.ina_cured_amount);
+//        ina_died=ina_died.findViewById(R.id.ina_died_amount);
+//
+//        load_ina();
+//    }
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         // There may be multiple widgets active, so update all of them
+//        ina_pos= ina_pos.findViewById(R.id.ina_pos_amount);
+//        ina_cured= ina_cured.findViewById(R.id.ina_cured_amount);
+//        ina_died=ina_died.findViewById(R.id.ina_died_amount);
 
         CharSequence widgetText = context.getString(R.string.appwidget_text);
         for (int appWidgetId : appWidgetIds) {
@@ -77,9 +56,15 @@ public class CovidWidget extends AppWidgetProvider {
             PendingIntent pendingIntent=PendingIntent.getActivity(context, 0,
                     intent, 0);
 
+            Intent viewIntent=new Intent(context, CovidWidget.class);
+            PendingIntent viewPendingIntent=PendingIntent.getActivity(context, 0,
+                    viewIntent, 0);
+
             RemoteViews views=new RemoteViews(context.getPackageName(), R.layout.covid_widget);
 //            views.setTextViewText(R.id.ina_pos, );
             views.setOnClickPendingIntent(R.id.buttonWidget, pendingIntent);
+
+
 
 
             appWidgetManager.updateAppWidget(appWidgetId, views);
@@ -95,40 +80,44 @@ public class CovidWidget extends AppWidgetProvider {
     public void onDisabled(Context context) {
         // Enter relevant functionality for when the last widget is disabled
     }
-
-    private void load_ina(){
-        AndroidNetworking.get("https://api.kawalcorona.com/indonesia/")
-                .setTag(this)
-                .setPriority(Priority.LOW)
-                .build()
-                .getAsJSONArray(new JSONArrayRequestListener() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        Log.d("lokal", response.toString());
-                        try {
-
-                            for(int i=0;i<response.length();i++){
-                                JSONObject nasional=response.getJSONObject(i);
-                                ind_pos=nasional.getString("positif");
-                                ind_cured=nasional.getString("sembuh");
-                                ind_died=nasional.getString("meninggal");
-
-                                ina_pos.setText(ind_pos);
-                                ina_cured.setText(ind_cured);
-                                ina_died.setText(ind_died);
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-
-                    @Override
-                    public void onError(ANError anError) {
-
-                    }
-                });
-
-    }
+//
+//    private void lokal(){
+//        AndroidNetworking.get("https://api.covid19api.com/summary")
+//                .setTag("test")
+//                .setPriority(Priority.HIGH)
+//                .build()
+//                .getAsJSONObject(new JSONObjectRequestListener() {
+//                    @Override
+//                    public void onResponse(JSONObject response) {
+//                        try {
+//                            Log.d("indonesia", response.toString());
+//                            JSONArray array = response.getJSONArray("Countries");
+//                            for(int i=0; i<array.length();i++){
+//                                JSONObject jsonObject=array.getJSONObject(i);
+//                                String ind = jsonObject.getString("Country");
+//                                if(ind.equals("Indonesia")){
+//
+//                                    ind_pos=jsonObject.getString("TotalConfirmed");
+//                                    ind_cured=jsonObject.getString("TotalRecovered");
+//                                    ind_died=jsonObject.getString("TotalDeaths");
+//
+//
+//                                    ina_pos.setText(ind_pos);
+//                                    ina_cured.setText(ind_cured);
+//                                    ina_died.setText(ind_died);
+//                                }
+//                            }
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//
+//                    }
+//
+//                    @Override
+//                    public void onError(ANError anError) {
+//
+//                    }
+//                });
+//    }
 }
 

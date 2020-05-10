@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "857681753873",
+    "firebase_url": "https://kawalingkungan.firebaseio.com",
+    "project_id": "kawalingkungan",
+    "storage_bucket": "kawalingkungan.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:857681753873:android:255e79866512d641757eb0",
+        "android_client_info": {
+          "package_name": "com.example.kawalingkungan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "857681753873-3ttip8sbmcdttdjd9etjah6iua58gt8s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kawalingkungan",
+            "certificate_hash": "1df7891b9f11a3044f96e1868aec1b02ad5a5492"
+          }
+        },
+        {
+          "client_id": "857681753873-t0qtrf1ov58qqfplp6n8rimtp52n7gpg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGtE4H9byvmZcY4369B3ygcwK5QvHI9AI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "857681753873-t0qtrf1ov58qqfplp6n8rimtp52n7gpg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

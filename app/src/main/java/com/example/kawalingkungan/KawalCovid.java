@@ -1,16 +1,14 @@
 package com.example.kawalingkungan;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import android.nfc.Tag;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -22,7 +20,6 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.androidnetworking.interfaces.ParsedRequestListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -53,10 +50,9 @@ public class KawalCovid extends AppCompatActivity {
 
         mQueue= Volley.newRequestQueue(this);
 
-        json_died();
-        json_cured();
-        json_pos();
-        load_ina();
+//        load_ina();
+        global();
+        lokal();
         setupToolbar();
     }
 
@@ -67,110 +63,10 @@ public class KawalCovid extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
-    private void json_died(){
-        String url="https://api.kawalcorona.com/meninggal";
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url,
-                null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    Log.d("_try", response.toString());
-                    value_died=response.getString("value");
-
-                    global_died.setText(value_died);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        });
-        mQueue.add(request);
-    }
-
-    private void json_cured(){
-        String url="https://api.kawalcorona.com/sembuh";
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET,
-                url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    Log.d("_try", response.toString());
-                    value_cured=response.getString("value");
-
-                    global_cured.setText(value_cured);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        });
-        mQueue.add(request);
-    }
-
-    private void json_pos(){
-        String url="https://api.kawalcorona.com/positif";
-        JsonObjectRequest request=new JsonObjectRequest(Request.Method.GET, url,
-                null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    Log.d("_try", response.toString());
-                    value_pos=response.getString("value");
-
-                    global_pos.setText(value_pos);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        });
-        mQueue.add(request);
-    }
-
-    private void json_ina(){
-        String url="https://api.kawalcorona.com/indonesia/";
-        JsonObjectRequest request=new JsonObjectRequest(Request.Method.GET, url,
-                null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    Log.d("data", response.toString());
-                    ind_pos=response.getString("positif");
-                    ind_cured=response.getString("sembuh");
-                    ind_died=response.getString("meninggal");
-
-                    ina_pos.setText(ind_pos);
-                    ina_cured.setText(ind_cured);
-                    ina_died.setText(ind_died);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        });
-        mQueue.add(request);
-    }
-
     private void load_ina(){
         AndroidNetworking.get("https://api.kawalcorona.com/indonesia/")
                 .setTag(this)
-                .setPriority(Priority.LOW)
+                .setPriority(Priority.HIGH)
                 .build()
                 .getAsJSONArray(new JSONArrayRequestListener() {
                     @Override
@@ -184,9 +80,9 @@ public class KawalCovid extends AppCompatActivity {
                                 ind_cured=nasional.getString("sembuh");
                                 ind_died=nasional.getString("meninggal");
 
-                                ina_pos.setText(ind_pos);
-                                ina_cured.setText(ind_cured);
-                                ina_died.setText(ind_died);
+                                ina_pos.setText(ind_pos  + getString(R.string.kasus));
+                                ina_cured.setText(ind_cured + getString(R.string.kasus));
+                                ina_died.setText(ind_died + getString(R.string.kasus));
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -201,5 +97,77 @@ public class KawalCovid extends AppCompatActivity {
                 });
 
     }
+
+    private void global(){
+        AndroidNetworking.get("https://api.covid19api.com/summary")
+                .setTag(this)
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            Log.d("positif", response.toString());
+                            JSONObject jsonObject=response.getJSONObject("Global");
+                                value_pos = jsonObject.getString("TotalConfirmed");
+                                value_cured = jsonObject.getString("TotalRecovered");
+                                value_died = jsonObject.getString("TotalDeaths");
+
+                                global_pos.setText(value_pos + getString(R.string.kasus));
+                                global_cured.setText(value_cured + getString(R.string.kasus));
+                                global_died.setText(value_died + getString(R.string.kasus));
+
+                        }catch (JSONException e){
+                            e.printStackTrace();
+                            Toast.makeText(KawalCovid.this, "Gagal menampilkan data!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                    }
+                });
+    }
+
+    private void lokal(){
+        AndroidNetworking.get("https://api.covid19api.com/summary")
+                .setTag("test")
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            Log.d("indonesia", response.toString());
+                            JSONArray array = response.getJSONArray("Countries");
+                            for(int i=0; i<array.length();i++){
+                                JSONObject jsonObject=array.getJSONObject(i);
+                                String ind = jsonObject.getString("Country");
+                                if(ind.equals("Indonesia")){
+
+                                    ind_pos=jsonObject.getString("TotalConfirmed");
+                                    ind_cured=jsonObject.getString("TotalRecovered");
+                                    ind_died=jsonObject.getString("TotalDeaths");
+
+
+                                    ina_pos.setText(ind_pos + getString(R.string.kasus));
+                                    ina_cured.setText(ind_cured + getString(R.string.kasus));
+                                    ina_died.setText(ind_died + getString(R.string.kasus));
+                                }
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                    }
+                });
+    }
+
 
 }

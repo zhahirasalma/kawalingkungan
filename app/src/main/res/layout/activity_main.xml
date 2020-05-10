@@ -18,18 +18,43 @@
         android:layout_alignParentRight="true"
         />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ganti_bahasa">
+        <ImageView
+            android:id="@+id/img_logo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/logohijau"
+            android:layout_marginLeft="40dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kawalingkungan"
+            android:textSize="30sp"
+            android:textColor="#ffff"
+            android:textStyle="bold"
+            android:layout_toEndOf="@+id/img_logo"
+            android:paddingTop="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="10dp"
+            />
+    </LinearLayout>
+
     <TextView
         android:id="@+id/kawalBerita_text"
         android:layout_below="@+id/ganti_bahasa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
+        android:layout_marginLeft="20dp"
         android:text="@string/kawal_berita"
         android:padding="12dp"
         android:textSize="18dp"
         android:textStyle="bold"
         android:textColor="@color/brown"/>
-    
+
     <GridLayout
         android:id="@+id/layout_berita"
         android:layout_width="match_parent"
@@ -66,7 +91,6 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
         </LinearLayout>
-
     </GridLayout>
 
     <GridLayout
@@ -75,22 +99,39 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/layout_berita"
         android:columnCount="1">
+        <LinearLayout>
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
+            <TextView
+                android:id="@+id/kaKes_text"
+                android:layout_below="@+id/img_kawalKesehatan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/kesehatan"
+                android:padding="8dp"
+                android:textSize="14dp"
+                android:textColor="@color/brown"
+                android:layout_marginLeft="80dp"/>
 
-        <TextView
-            android:id="@+id/kaKes_text"
-            android:layout_below="@+id/img_kawalKesehatan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/kawal_kesehatan"
-            android:padding="8dp"
-            android:textSize="14dp"
-            android:textColor="@color/brown"/>
+            <TextView
+                android:id="@+id/kaKel_text"
+                android:layout_below="@+id/img_kawalLingkungan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lingkungan"
+                android:padding="8dp"
+                android:textSize="14dp"
+                android:textColor="@color/brown"
+                android:layout_marginLeft="80dp"/>
 
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
     </GridLayout>
 
 
@@ -101,10 +142,24 @@
         android:layout_height="wrap_content"
         android:text="@string/kawal_bencana"
         android:padding="12dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"
         android:textSize="18dp"
         android:textStyle="bold"
         android:textColor="@color/brown"/>
+
+    <TextView
+        android:id="@+id/abaikan_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/abaikan_notifikasi"
+        android:layout_toEndOf="@id/kawalBencana_text"
+        android:layout_below="@id/layout_berita"
+        android:layout_marginTop="50dp"
+        android:padding="12dp"
+        android:textSize="16dp"
+        android:textColor="@color/brown"
+        android:layout_marginLeft="60dp"/>
 
     <GridLayout
         android:id="@+id/layout_bencana"
@@ -142,6 +197,48 @@
                 android:layout_weight="1" />
         </LinearLayout>
     </GridLayout>
+
+    <GridLayout
+        android:id="@+id/layout_bencana_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_bencana"
+        android:columnCount="1">
+        <LinearLayout>
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/kagem_text"
+                android:layout_below="@+id/img_kawalGempa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gempa_bumi"
+                android:padding="8dp"
+                android:textSize="14dp"
+                android:textColor="@color/brown"
+                android:layout_marginLeft="70dp"/>
+
+            <TextView
+                android:id="@+id/kacov_text"
+                android:layout_below="@+id/img_kawalCovid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="COVID-19"
+                android:padding="8dp"
+                android:textSize="14dp"
+                android:textColor="@color/brown"
+                android:layout_marginLeft="80dp"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </GridLayout>
+
 
 
 
