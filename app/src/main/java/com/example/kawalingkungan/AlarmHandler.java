@@ -21,7 +21,7 @@ public class AlarmHandler {
                 0);
         AlarmManager alarmManager=(AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         if(alarmManager!=null) {
-            long triggerAfter = 1 * 60 * 1000;
+            long triggerAfter = 720 * 60 * 1000;
             long triggerEvery = 720 * 60 * 1000;
             alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, triggerAfter,
                     triggerEvery,
