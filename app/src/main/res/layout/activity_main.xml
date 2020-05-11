@@ -164,7 +164,7 @@
         android:id="@+id/abaikan_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Abaikan Notifikasi"
+        android:text="@string/abaikan_notifikasi"
         android:layout_toEndOf="@id/kawalBencana_text"
         android:layout_below="@id/layout_berita"
         android:layout_marginTop="50dp"

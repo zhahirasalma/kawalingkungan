@@ -63,13 +63,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this);
-                builder.setMessage("Apakah anda yakin akan mengabaikan notifikasi?")
-                        .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                builder.setMessage(R.string.message_alert)
+                        .setPositiveButton(R.string.ya, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 alarmHandler.cancelAlarmManager();
                             }
-                        }).setNegativeButton("Tidak", null);
+                        }).setNegativeButton(R.string.tidak, null);
                 AlertDialog alertDialog=builder.create();
                 alertDialog.show();
 

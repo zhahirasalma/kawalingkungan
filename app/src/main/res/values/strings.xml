@@ -15,8 +15,11 @@
     <string name="title_notif" translatable="false">Kawal Gempa Bumi</string>
     <string name="subtitle_notif" translatable="false">Cek apakah ada gempa bumi yang baru saja terjadi di sekitarmu</string>
     <string name="gempa_bumi">Gempa Bumi</string>
-    <string name="abaikan_notifikasi">Abaikan Notifikasi</string>
     <string name="lingkungan">Lingkungan</string>
     <string name="kesehatan">Kesehatan</string>
     <string name="covid_19">COVID-19</string>
+    <string name="message_alert">Apakah anda yakin akan mengabaikan notifikasi?</string>
+    <string name="abaikan_notifikasi">Abaikan Notifikasi</string>
+    <string name="ya">Ya</string>
+    <string name="tidak">Tidak</string>
 </resources>

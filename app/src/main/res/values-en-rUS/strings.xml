@@ -14,5 +14,8 @@
     <string name="kesehatan">"   Health"</string>
     <string name="lingkungan">"  Environment"</string>
     <string name="covid_19">"  COVID-19"</string>
-    <string name="abaikan_notifikasi">Ignore Notification</string>
+    <string name="abaikan_notifikasi">Cancel Notification</string>
+    <string name="message_alert">Do you really want to cancel the notification?</string>
+    <string name="ya">Yes</string>
+    <string name="tidak">No</string>
 </resources>
