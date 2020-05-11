@@ -13,8 +13,9 @@
         android:layout_height="wrap_content"
         android:text="@string/bahasa"
         android:textColor="#ffffff"
-        android:textSize="18dp"
-        android:padding="16dp"
+        android:textSize="14sp"
+        android:padding="12dp"
+        android:textStyle="bold"
         android:layout_alignParentRight="true"
         />
 
@@ -24,20 +25,21 @@
         android:layout_below="@id/ganti_bahasa">
         <ImageView
             android:id="@+id/img_logo"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:src="@drawable/logohijau"
-            android:layout_marginLeft="40dp"/>
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="8dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Kawalingkungan"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textColor="#ffff"
             android:textStyle="bold"
             android:layout_toEndOf="@+id/img_logo"
-            android:paddingTop="30dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="40dp"
             android:layout_marginLeft="10dp"
             />
     </LinearLayout>
@@ -51,7 +53,7 @@
         android:layout_marginLeft="20dp"
         android:text="@string/kawal_berita"
         android:padding="12dp"
-        android:textSize="18dp"
+        android:textSize="16sp"
         android:textStyle="bold"
         android:textColor="@color/brown"/>
 
@@ -114,7 +116,12 @@
                 android:padding="8dp"
                 android:textSize="14dp"
                 android:textColor="@color/brown"
-                android:layout_marginLeft="80dp"/>
+                android:layout_marginLeft="65dp"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/kaKel_text"
@@ -125,7 +132,7 @@
                 android:padding="8dp"
                 android:textSize="14dp"
                 android:textColor="@color/brown"
-                android:layout_marginLeft="80dp"/>
+                android:layout_marginLeft="65dp"/>
 
             <Space
                 android:layout_width="wrap_content"
@@ -144,22 +151,27 @@
         android:padding="12dp"
         android:layout_marginTop="50dp"
         android:layout_marginLeft="20dp"
-        android:textSize="18dp"
+        android:textSize="16sp"
         android:textStyle="bold"
         android:textColor="@color/brown"/>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
 
     <TextView
         android:id="@+id/abaikan_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/abaikan_notifikasi"
+        android:text="Abaikan Notifikasi"
         android:layout_toEndOf="@id/kawalBencana_text"
         android:layout_below="@id/layout_berita"
         android:layout_marginTop="50dp"
         android:padding="12dp"
-        android:textSize="16dp"
+        android:textSize="14sp"
         android:textColor="@color/brown"
-        android:layout_marginLeft="60dp"/>
+        android:layout_marginLeft="55dp"/>
 
     <GridLayout
         android:id="@+id/layout_bencana"
@@ -219,18 +231,23 @@
                 android:padding="8dp"
                 android:textSize="14dp"
                 android:textColor="@color/brown"
-                android:layout_marginLeft="70dp"/>
+                android:layout_marginLeft="60dp"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/kacov_text"
                 android:layout_below="@+id/img_kawalCovid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="COVID-19"
+                android:text="@string/covid_19"
                 android:padding="8dp"
                 android:textSize="14dp"
                 android:textColor="@color/brown"
-                android:layout_marginLeft="80dp"/>
+                android:layout_marginLeft="60dp"/>
 
             <Space
                 android:layout_width="wrap_content"

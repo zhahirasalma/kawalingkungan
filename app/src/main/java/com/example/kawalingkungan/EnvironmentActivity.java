@@ -59,7 +59,7 @@ public class EnvironmentActivity extends AppCompatActivity implements NewsAdapte
 
     private void setupToolbar() {
         Toolbar toolbar = findViewById(R.id.tbNews);
-        toolbar.setTitle("Kawal Kesehatan");
+        toolbar.setTitle("Kawal Lingkungan");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }

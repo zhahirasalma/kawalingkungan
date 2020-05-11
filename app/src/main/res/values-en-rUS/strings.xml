@@ -2,12 +2,17 @@
 <resources>
     <string name="app_name">Kawalingkungan</string>
     <string name="dialog_tunggu">Please wait</string>
-    <string name="dialog_tunggu_2">showing data?</string>
+    <string name="dialog_tunggu_2">Preparing your data</string>
     <string name="bahasa">Language</string>
-    <string name="positif">Positive: </string>
-    <string name="sembuh">Cured: </string>
-    <string name="meninggal">Died :</string>
+    <string name="positif">Confirmed:</string>
+    <string name="sembuh">Recovered:</string>
+    <string name="meninggal">"Deaths      :"</string>
     <string name="appwidget_text">Example</string>
     <string name="add_widget">Add Widget</string>
     <string name="kasus">" cases"</string>
+    <string name="gempa_bumi">Earthquake</string>
+    <string name="kesehatan">"   Health"</string>
+    <string name="lingkungan">"  Environment"</string>
+    <string name="covid_19">"  COVID-19"</string>
+    <string name="abaikan_notifikasi">Ignore Notification</string>
 </resources>

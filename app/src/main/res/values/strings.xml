@@ -5,17 +5,18 @@
     <string name="bahasa">Bahasa</string>
     <string name="kawal_berita" translatable="false">Kawal Berita</string>
     <string name="kawal_bencana" translatable="false">Kawal Bencana</string>
-    <string name="positif">Positif: </string>
-    <string name="sembuh">Sembuh: </string>
+    <string name="positif">"Positif      :" </string>
+    <string name="sembuh">"Sembuh   :" </string>
     <string name="meninggal">Meninggal: </string>
     <string name="appwidget_text">Contoh</string>
     <string name="add_widget">Tambah Widget</string>
     <string name="kawal_kesehatan" translatable="false">Kawal Kesehatan</string>
-    <string name="kasus"> kasus</string>
-    <string name="title_notif">Kawal Gempa Bumi</string>
-    <string name="subtitle_notif">Cek apakah ada gempa bumi yang baru saja terjadi di sekitarmu</string>
+    <string name="kasus">" kasus"</string>
+    <string name="title_notif" translatable="false">Kawal Gempa Bumi</string>
+    <string name="subtitle_notif" translatable="false">Cek apakah ada gempa bumi yang baru saja terjadi di sekitarmu</string>
     <string name="gempa_bumi">Gempa Bumi</string>
     <string name="abaikan_notifikasi">Abaikan Notifikasi</string>
     <string name="lingkungan">Lingkungan</string>
     <string name="kesehatan">Kesehatan</string>
+    <string name="covid_19">COVID-19</string>
 </resources>

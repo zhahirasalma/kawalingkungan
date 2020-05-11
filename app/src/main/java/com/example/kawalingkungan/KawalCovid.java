@@ -1,6 +1,9 @@
 package com.example.kawalingkungan;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,7 +38,7 @@ public class KawalCovid extends AppCompatActivity {
 
     String value_died, value_cured, value_pos, ind_pos, ind_cured, ind_died;
 
-    private RequestQueue mQueue;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,12 +51,10 @@ public class KawalCovid extends AppCompatActivity {
         global_cured=findViewById(R.id.global_cured_amount);
         global_died=findViewById(R.id.global_died_amount);
 
-        mQueue= Volley.newRequestQueue(this);
-
-//        load_ina();
         global();
         lokal();
         setupToolbar();
+
     }
 
     private void setupToolbar() {
@@ -61,41 +62,6 @@ public class KawalCovid extends AppCompatActivity {
         toolbar.setTitle("Kawal Covid");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-    }
-
-    private void load_ina(){
-        AndroidNetworking.get("https://api.kawalcorona.com/indonesia/")
-                .setTag(this)
-                .setPriority(Priority.HIGH)
-                .build()
-                .getAsJSONArray(new JSONArrayRequestListener() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        Log.d("lokal", response.toString());
-                        try {
-
-                            for(int i=0;i<response.length();i++){
-                                JSONObject nasional=response.getJSONObject(i);
-                                ind_pos=nasional.getString("positif");
-                                ind_cured=nasional.getString("sembuh");
-                                ind_died=nasional.getString("meninggal");
-
-                                ina_pos.setText(ind_pos  + getString(R.string.kasus));
-                                ina_cured.setText(ind_cured + getString(R.string.kasus));
-                                ina_died.setText(ind_died + getString(R.string.kasus));
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-
-                    @Override
-                    public void onError(ANError anError) {
-
-                    }
-                });
-
     }
 
     private void global(){
@@ -125,12 +91,12 @@ public class KawalCovid extends AppCompatActivity {
 
                     @Override
                     public void onError(ANError anError) {
-
+                        Toast.makeText(KawalCovid.this, "Tidak ada jaringan internet!", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
-    private void lokal(){
+    public void lokal(){
         AndroidNetworking.get("https://api.covid19api.com/summary")
                 .setTag("test")
                 .setPriority(Priority.HIGH)
@@ -150,23 +116,38 @@ public class KawalCovid extends AppCompatActivity {
                                     ind_cured=jsonObject.getString("TotalRecovered");
                                     ind_died=jsonObject.getString("TotalDeaths");
 
-
                                     ina_pos.setText(ind_pos + getString(R.string.kasus));
                                     ina_cured.setText(ind_cured + getString(R.string.kasus));
                                     ina_died.setText(ind_died + getString(R.string.kasus));
+
+                                    sharedPreferences = getSharedPreferences("VALUE", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                    editor.putString("INA_POS", ind_pos);
+                                    editor.putString("INA_SEMBUH", ind_cured);
+                                    editor.putString("INA_WAFAT", ind_died);
+                                    editor.apply();
+                                    Log.d("covid_widget_b", sharedPreferences.getString("INA_POS", "-"));
+
+                                    setData();
+
                                 }
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
                     }
-
                     @Override
                     public void onError(ANError anError) {
-
+                        Toast.makeText(KawalCovid.this, "Tidak ada jaringan internet!", Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    private void setData(){
+        SharedPreferences sharedPreferences= this.getSharedPreferences("VALUE",
+                Context.MODE_PRIVATE);
+
+
     }
 
 

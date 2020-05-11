@@ -30,6 +30,7 @@
             android:text="Indonesia"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:textColor="@color/black"
             android:layout_marginLeft="20dp"/>
 
         <RelativeLayout
@@ -48,10 +49,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/img_ina_pos"
-                android:text="Positif"
+                android:text="@string/positif"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 android:layout_marginLeft="30dp"
-                android:layout_marginRight="100dp"
+                android:layout_marginRight="30dp"
                 android:paddingTop="15dp"
                 />
             <TextView
@@ -59,10 +61,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/ina_pos"
-                android:text="XXX kasus"
+                android:text=""
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 android:paddingTop="15dp"
-                android:layout_marginLeft="30dp" />
+                 />
 
         </RelativeLayout>
 
@@ -80,20 +83,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/img_ina_cur"
-                android:text="Sembuh"
+                android:text="@string/sembuh"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 android:layout_marginLeft="30dp"
-                android:layout_marginRight="100dp"
+                android:layout_marginRight="30dp"
                 android:paddingTop="15dp"/>
             <TextView
                 android:id="@+id/ina_cured_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/ina_cured"
-                android:text="XXX kasus"
+                android:text=""
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 android:paddingTop="15dp"
-                android:layout_marginLeft="20dp"/>
+                />
         </RelativeLayout>
 
         <RelativeLayout
@@ -110,20 +115,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/img_ina_died"
-                android:text="Meninggal"
+                android:text="@string/meninggal"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 android:layout_marginLeft="30dp"
-                android:layout_marginRight="100dp"
+                android:layout_marginRight="30dp"
                 android:paddingTop="15dp"/>
             <TextView
                 android:id="@+id/ina_died_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/ina_died"
-                android:text="XXX kasus"
+                android:text=""
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 android:paddingTop="15dp"
-                android:layout_marginLeft="5dp"/>
+                />
         </RelativeLayout>
 
         <TextView
@@ -133,6 +140,7 @@
             android:layout_below="@id/ina_died"
             android:layout_marginTop="20dp"
             android:text="Global"
+            android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginLeft="20dp"/>
@@ -152,10 +160,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/img_int_pos"
-                android:text="Positif"
+                android:text="@string/positif"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 android:layout_marginLeft="30dp"
-                android:layout_marginRight="100dp"
+                android:layout_marginRight="30dp"
                 android:paddingTop="15dp"/>
             <TextView
                 android:id="@+id/global_pos_amount"
@@ -164,8 +173,9 @@
                 android:layout_toEndOf="@id/global_pos"
                 android:text=""
                 android:textStyle="bold"
-                android:paddingTop="10dp"
-                android:layout_marginLeft="30dp"/>
+                android:textColor="@color/black"
+                android:paddingTop="15dp"
+                />
         </RelativeLayout>
 
         <RelativeLayout
@@ -182,10 +192,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/img_int_cur"
-                android:text="Sembuh"
+                android:text="@string/sembuh"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 android:layout_marginLeft="30dp"
-                android:layout_marginRight="100dp"
+                android:layout_marginRight="30dp"
                 android:paddingTop="15dp"/>
             <TextView
                 android:id="@+id/global_cured_amount"
@@ -194,8 +205,9 @@
                 android:layout_toEndOf="@+id/global_cured"
                 android:text=""
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 android:paddingTop="15dp"
-                android:layout_marginLeft="20dp"/>
+               />
         </RelativeLayout>
 
         <RelativeLayout
@@ -212,20 +224,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/img_int_died"
-                android:text="Meninggal"
+                android:text="@string/meninggal"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 android:layout_marginLeft="30dp"
-                android:layout_marginRight="100dp"
+                android:layout_marginRight="30dp"
                 android:paddingTop="15dp"/>
             <TextView
                 android:id="@+id/global_died_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/global_died"
+                android:textColor="@color/black"
                 android:text=""
                 android:textStyle="bold"
                 android:paddingTop="15dp"
-                android:layout_marginLeft="5dp"/>
+                />
 
         </RelativeLayout>
 

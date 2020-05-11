@@ -1,11 +1,13 @@
 package com.example.kawalingkungan;
 
 import android.app.AlarmManager;
+import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
@@ -60,11 +62,19 @@ public class MainActivity extends AppCompatActivity {
         abaikan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                alarmHandler.cancelAlarmManager();
+                AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this);
+                builder.setMessage("Apakah anda yakin akan mengabaikan notifikasi?")
+                        .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                alarmHandler.cancelAlarmManager();
+                            }
+                        }).setNegativeButton("Tidak", null);
+                AlertDialog alertDialog=builder.create();
+                alertDialog.show();
+
             }
         });
-
-        Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
 
         img_kawalKes.setOnClickListener(new View.OnClickListener() {
             @Override
